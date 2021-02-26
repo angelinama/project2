@@ -31,7 +31,7 @@
     "no-var": "error",
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
-    "prettier/prettier": "off",
+    "prettier/prettier": "error",
     "semi": ["error", "always"],
     "vars-on-top": "error",
     "yoda": "error"
