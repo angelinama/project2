@@ -12,12 +12,18 @@ module.exports = (app) => {
       where: {
         id: req.params.id,
       },
-    }).then((dbUser) => res.json(dbUser));
+    })
+      .then((dbUser) => res.json(dbUser))
+      //add .catch
+      .catch((error) => console.log({ error }));
   });
 
   app.post("/api/users", (req, res) => {
     console.log("Hello");
-    db.User.create(req.body).then((dbUser) => res.json(dbUser));
+    db.User.create(req.body)
+      .then((dbUser) => res.json(dbUser))
+      //add .catch. when email not @ doesn't work.
+      .catch((error) => res.status(500).json({ error }));
   });
 
   app.delete("/api/users/:id", (req, res) => {
