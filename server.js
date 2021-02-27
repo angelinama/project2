@@ -1,9 +1,11 @@
 const express = require("express");
+const db = require("./models");
 
 //import routes --Carolina
 const initRoute = require("./routes/init.js");
 const loginRoute = require("./routes/login.js");
 const signupRoute = require("./routes/signup.js");
+const wineRouter = require("./routes/wine-api-routes.js");
 
 // Sets up the Express App
 const app = express();
@@ -24,10 +26,11 @@ app.set("view engine", "handlebars");
 initRoute(app);
 loginRoute(app);
 signupRoute(app);
+wineRouter(app);
 
-// // Syncing our sequelize models and then starting our Express app
-// db.sequelize.sync({ force: true }).then(() => {
-//   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
-// });
+// Syncing our sequelize models and then starting our Express app
+db.sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+});
 
-app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+// app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));

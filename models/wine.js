@@ -1,28 +1,30 @@
 "use strict";
-const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
-  class Wine extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Wine.init(
-    {
-      wineName: DataTypes.STRING,
-      category: DataTypes.STRING,
-      country: DataTypes.STRING,
-      region: DataTypes.STRING,
-      year: DataTypes.INTEGER,
+  //match the ER diagram, only country and year could be null
+  const Wine = sequelize.define("Wine", {
+    wine_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    {
-      sequelize,
-      modelName: "Wine",
-    }
-  );
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    region: DataTypes.STRING,
+    year: DataTypes.INTEGER,
+  });
+
+  Wine.associate = (models) => {
+    Wine.hasMany(models.Review, {
+      onDelete: "cascade",
+      foreignKey: "wine_id",
+    });
+  };
+
   return Wine;
 };
