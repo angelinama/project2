@@ -4,6 +4,7 @@ const db = require("./models");
 
 //import routes
 const loginRoute = require("./routes/login.js");
+const htmlRoutes = require("./routes/html-routes.js");
 const wineRouter = require("./routes/wine-api-routes.js");
 const userRouter = require("./routes/user-api-routes.js");
 const reviewRouter = require("./routes/review-api-routes.js");
@@ -28,6 +29,7 @@ loginRoute(app);
 wineRouter(app);
 userRouter(app);
 reviewRouter(app);
+htmlRoutes(app);
 
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync().then(() => {
