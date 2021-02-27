@@ -1,7 +1,7 @@
 {
   "development": {
+    "use_env_variable": "DB_PASSWORD",
     "username": "root",
-    "password": "flower34777",
     "database": "database_development",
     "host": "127.0.0.1",
     "dialect": "mysql"
