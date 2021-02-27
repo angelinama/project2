@@ -11,4 +11,8 @@ module.exports = (app) => {
   app.get("/wineentry", (req, res) => {
     res.render("../views/wineentry.handlebars");
   });
+  //render the winerate page in browser
+  app.get("/wineentry", (req, res) => {
+    res.render("../views/wineentry.handlebars");
+  });
 };
