@@ -4,6 +4,7 @@ const express = require("express");
 const initRoute = require("./routes/init.js");
 const loginRoute = require("./routes/login.js");
 const signupRoute = require("./routes/signup.js");
+const htmlRoutes = require("./routes/html-routes.js");
 
 // Sets up the Express App
 const app = express();
@@ -24,6 +25,7 @@ app.set("view engine", "handlebars");
 initRoute(app);
 loginRoute(app);
 signupRoute(app);
+htmlRoutes(app);
 
 // // Syncing our sequelize models and then starting our Express app
 // db.sequelize.sync({ force: true }).then(() => {
