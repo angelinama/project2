@@ -1,22 +1,27 @@
+"use strict";
 // Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
 const bcrypt = require("bcryptjs");
 // Creating our User model
 module.exports = (sequelize, DataTypes) => {
+  const type = {
+    type: DataTypes.STRING,
+    allowNull: false,
+  };
+
   const User = sequelize.define("User", {
+    user_name: type,
+    email: type,
+    password: type,
     // The email cannot be null, and must be a proper email before creation
     email: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type,
       unique: true,
       validate: {
         isEmail: true,
       },
     },
     // The password cannot be null
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    password: type,
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = (password) => {
@@ -31,15 +36,6 @@ module.exports = (sequelize, DataTypes) => {
       bcrypt.genSaltSync(10),
       null
     );
-  });
-=======
-"use strict";
-
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define("User", {
-    user_name: { type: DataTypes.STRING, allowNull: false },
-    email: { type: DataTypes.STRING, allowNull: false },
-    password: { type: DataTypes.STRING, allowNull: false },
   });
 
   User.associate = (models) => {
