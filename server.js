@@ -1,10 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const db = require("./models");
 
-//import routes --Carolina
-const initRoute = require("./routes/init.js");
+//import routes
 const loginRoute = require("./routes/login.js");
-const signupRoute = require("./routes/signup.js");
 const wineRouter = require("./routes/wine-api-routes.js");
 const userRouter = require("./routes/user-api-routes.js");
 const reviewRouter = require("./routes/review-api-routes.js");
@@ -25,9 +24,7 @@ const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-initRoute(app);
 loginRoute(app);
-signupRoute(app);
 wineRouter(app);
 userRouter(app);
 reviewRouter(app);
