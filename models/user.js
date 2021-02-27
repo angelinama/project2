@@ -10,7 +10,10 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = (models) => {
     User.hasMany(models.Review, {
       onDelete: "cascade",
-      // foreignKey: "user_id",
+      foreignKey: {
+        allowNull: false,
+        name: "user_id",
+      },
     });
   };
 

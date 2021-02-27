@@ -17,10 +17,16 @@ module.exports = (sequelize, DataTypes) => {
 
   Review.associate = (models) => {
     Review.belongsTo(models.Wine, {
-      allowNull: false,
+      foreignKey: {
+        allowNull: false,
+        name: "wine_id",
+      },
     });
     Review.belongsTo(models.User, {
-      allowNull: false,
+      foreignKey: {
+        allowNull: false,
+        name: "user_id",
+      },
     });
   };
 
