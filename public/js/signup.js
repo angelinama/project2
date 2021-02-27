@@ -17,12 +17,17 @@ $(document).ready(() => {
       confirmPassword: confirmPassword.val().trim(),
     };
 
-    if (!userData.name || !userData.email || !userData.password) {
-      console.log("all fields required");
+    if (
+      !userData.name ||
+      !userData.email ||
+      !userData.password ||
+      !userData.confirmPassword
+    ) {
+      $("#alert").text("all fields required");
       return;
     }
     if (!(userData.password === userData.confirmPassword)) {
-      console.log("passwords don't match");
+      $("#alert").text("passwords don't match");
 
       return;
     }
@@ -31,19 +36,18 @@ $(document).ready(() => {
     nameInput.val("");
     emailInput.val("");
     passwordInput.val("");
+    confirmPassword.val("");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
-    debugger;
     $.post("/api/users", {
       name: name,
       email: email,
       password: password,
     }) // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        console.log(data, "signup.js :45");
         // window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
