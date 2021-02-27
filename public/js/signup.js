@@ -1,4 +1,5 @@
-$(document).ready = () => {
+$(document).ready(() => {
+  console.log("hello 1");
   // Getting references to our form and input
   const signUpForm = $("form.signup");
   const nameInput = $("input#name-input");
@@ -8,6 +9,7 @@ $(document).ready = () => {
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", (event) => {
+    console.log("Hello");
     event.preventDefault();
 
     const userData = {
@@ -33,13 +35,14 @@ $(document).ready = () => {
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
-    $.post("/api/signup", {
+    $.post("/api/users", {
       name: name,
       email: email,
       password: password,
     }) // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        window.location.replace("/members");
+        console.log(data);
+        // window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
@@ -49,4 +52,4 @@ $(document).ready = () => {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
   }
-};
+});
