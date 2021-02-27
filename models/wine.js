@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Wine.associate = (models) => {
     Wine.hasMany(models.Review, {
       onDelete: "cascade",
-      foreignKey: "wine_id",
+      // foreignKey: "wine_id",
     });
   };
 

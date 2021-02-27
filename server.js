@@ -6,6 +6,8 @@ const initRoute = require("./routes/init.js");
 const loginRoute = require("./routes/login.js");
 const signupRoute = require("./routes/signup.js");
 const wineRouter = require("./routes/wine-api-routes.js");
+const userRouter = require("./routes/user-api-routes.js");
+const reviewRouter = require("./routes/review-api-routes.js");
 
 // Sets up the Express App
 const app = express();
@@ -27,10 +29,10 @@ initRoute(app);
 loginRoute(app);
 signupRoute(app);
 wineRouter(app);
+userRouter(app);
+reviewRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 });
-
-// app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));

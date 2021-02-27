@@ -20,7 +20,7 @@ module.exports = (app) => {
   });
 
   app.delete("/api/wines/:id", (req, res) => {
-    db.Author.destroy({
+    db.Wine.destroy({
       where: {
         id: req.params.id,
       },

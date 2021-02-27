@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     Review.belongsTo(models.Wine, {
       allowNull: false,
     });
+    Review.belongsTo(models.User, {
+      allowNull: false,
+    });
   };
 
   return Review;
