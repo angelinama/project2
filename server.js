@@ -1,6 +1,6 @@
 const express = require("express");
 
-//import routes --Carolina
+//import HTML routes
 const initRoute = require("./routes/init.js");
 const loginRoute = require("./routes/login.js");
 const signupRoute = require("./routes/signup.js");
