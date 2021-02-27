@@ -12,6 +12,8 @@
       <img src="" alt="logo" />
       <h1>Join WineLog</h1>
       <p>
+        npm run lint (this will track your lint error)
+        npm fix (will fix automatically)
         Rank a wine, <br />
         keep your wine history, <br />
         discover new wines, <br />

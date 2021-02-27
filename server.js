@@ -1,10 +1,13 @@
+require("dotenv").config();
 const express = require("express");
+const db = require("./models");
 
-//import HTML routes
-const initRoute = require("./routes/init.js");
+//import routes
 const loginRoute = require("./routes/login.js");
-const signupRoute = require("./routes/signup.js");
 const htmlRoutes = require("./routes/html-routes.js");
+const wineRouter = require("./routes/wine-api-routes.js");
+const userRouter = require("./routes/user-api-routes.js");
+const reviewRouter = require("./routes/review-api-routes.js");
 
 // Sets up the Express App
 const app = express();
@@ -22,14 +25,13 @@ const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-initRoute(app);
 loginRoute(app);
-signupRoute(app);
+wineRouter(app);
+userRouter(app);
+reviewRouter(app);
 htmlRoutes(app);
 
-// // Syncing our sequelize models and then starting our Express app
-// db.sequelize.sync({ force: true }).then(() => {
-//   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
-// });
-
-app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+// Syncing our sequelize models and then starting our Express app
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+});
