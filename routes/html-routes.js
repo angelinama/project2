@@ -7,4 +7,8 @@ module.exports = (app) => {
   app.get("/winestart", (req, res) => {
     res.render("../views/winestart.handlebars");
   });
+  //render the wineentry page in browser
+  app.get("/wineentry", (req, res) => {
+    res.render("../views/wineentry.handlebars");
+  });
 };
