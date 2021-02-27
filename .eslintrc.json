@@ -33,7 +33,7 @@
     "prefer-const": "error",
     "prettier/prettier": "error",
     "quotes": ["off", "double"],
-    "rest-spread-spacing": ["never"],
+    "rest-spread-spacing": 1,
     "semi": ["error", "always"],
     "vars-on-top": "error",
     "yoda": "error"
