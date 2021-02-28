@@ -1,6 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const db = require("./models");
+const session = require("express-session");
+const passport = require("./config/passport");
 
 //import routes
 const htmlRoutes = require("./routes/html-routes.js");
@@ -16,6 +18,13 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// We need to use sessions to keep track of our user's login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Static directory
 app.use(express.static("public"));
 
@@ -24,7 +33,6 @@ const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
-loginRoute(app);
 wineRouter(app);
 userRouter(app);
 reviewRouter(app);
