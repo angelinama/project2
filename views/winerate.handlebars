@@ -1,10 +1,65 @@
 <div class="container-fluid winelogbody winerate">
-     <header class="row justify-content-center">
+     <header class="row justify-content-center wlcm">
         <div class="col-10">
             <h1>RATE YOUR WINE</h1>
         </div>
     </header>
     <div class="row justify-content-center">
-
+        <div class="col-10">
+            <div class="star-rating">
+                <form>
+                    <div class="star-input m5">
+                        <label>Overall Rating</label>
+                        <span class="star-rating">
+                            <input type="radio" name="overallrating" value="1"><i class="fas fa-star"></i>
+                            <input type="radio" name="overallrating" value="2"><i class="fas fa-star"></i>
+                            <input type="radio" name="overallrating" value="3"><i class="fas fa-star"></i>
+                            <input type="radio" name="overallrating" value="4"><i class="fas fa-star"></i>
+                            <input type="radio" name="overallrating" value="5"><i class="fas fa-star"></i>
+                        </span>
+                    </div>
+                    <div class="favorite-input m5">
+                        <label>Add to Your Favorites</label>
+                        <span class="favorite-rating">
+                            <input type="checkbox" name="addfavorite" value="true"><i class="fas fa-heart"></i>
+                        </span>
+                    </div>
+                    <div class="m5">
+                        <h4>My Taste Notes</h4>
+                        <h5>Aroma</h5>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="fruit">fruit</label>
+                            <input class="form-check-input" type="checkbox" id="fruit" value="1">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="herbal">herbal</label>
+                            <input class="form-check-input" type="checkbox" id="herbal" value="1">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="earth">earth</label>
+                            <input class="form-check-input" type="checkbox" id="earth" value="1">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="earth">floral</label>
+                            <input class="form-check-input" type="checkbox" id="floral" value="1">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="spice">spice</label>
+                            <input class="form-check-input" type="checkbox" id="spice" value="1">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label" for="chemical">chemical</label>
+                            <input class="form-check-input" type="checkbox" id="chemical" value="1">
+                        </div>
+                    </div>
+                    <div class="m5">
+                    Sweetness
+                    Acidity
+                    Tannins
+                    Body
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
