@@ -3,7 +3,6 @@ const express = require("express");
 const db = require("./models");
 
 //import routes
-const loginRoute = require("./routes/login.js");
 const htmlRoutes = require("./routes/html-routes.js");
 const wineRouter = require("./routes/wine-api-routes.js");
 const userRouter = require("./routes/user-api-routes.js");
