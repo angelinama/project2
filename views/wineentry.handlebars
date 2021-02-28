@@ -5,26 +5,20 @@
         </div>
     </header>
     <div class="row justify-content-center">
-        <form>
-            <label for="wine_name" class="form-label">Wine Name</label>
-            <input type="text" class="form-control" id="wine_name" placeholder="Enter the name of the wine">
+        <form class="wineentry">
+            <label for="wine_name"class="form-label">Wine Name</label>
+            <input type="text"  name="wine_name" class="form-control" id="wine_name" placeholder="Enter the name of the wine">
             <label for="category" class="form-label">Category</label>
-            <input type="text" class="form-control" id="category" placeholder="Red, White, Sparkling, Rose, Dessert, Fortified">
+            <input type="text" name="category" class="form-control" id="category" placeholder="Red, White, Sparkling, Rose, Dessert, Fortified">
             <label for="year" class="form-label">Year</label>
-            <input type="number" class="form-control" id="year" placeholder="1998">
+            <input type="number" name="year" class="form-control" id="year" placeholder="1998">
             <label for="country" class="form-label">County</label>
-            <input type="text" class="form-control" id="country" placeholder="https://github.com/mojoaxel/bootstrap-select-country">
+            <input type="text" name="country" class="form-control" id="country" placeholder="https://github.com/mojoaxel/bootstrap-select-country">
             <label for="region" class="form-label">Region</label>
-            <input type="text" class="form-control" id="region" placeholder="Bordeaux">
+            <input type="text" name="region" class="form-control" id="region" placeholder="Bordeaux">
             <div class="text-center mt">
-                <button type="submit" class="btn btn-primary">Add to Your Bucket List</button>
-                <button type="submit" class="btn btn-outline-primary">
-                    <a href="/winerate">Add to Your Wine History</a>
-                </button>
-
+                <button type="submit" class="btn btn-outline-primary">Continue to Rank</button>
             </div>
-            
-
         </form>
     </div>
 </div>
