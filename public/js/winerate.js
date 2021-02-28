@@ -15,7 +15,7 @@ $(document).ready(() => {
   // const tasteTannins = $("input.tannins");
   // const tasteBody = $("input.wbody");
 
-  wineratingForm.on("submit", (event) => {
-    event.preventDefault();
-  });
+  // wineratingForm.on("submit", (event) => {
+  //   event.preventDefault();
+  // });
 });

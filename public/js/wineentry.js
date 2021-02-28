@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  console.log("start entering wine");
   // Getting references to our form and input
   const signUpForm = $("form.signup");
   const wine_name = $("input#wine_name");
@@ -6,8 +7,6 @@ $(document).ready(() => {
   const country = $("input#country");
   const region = $("input#region");
   const year = $("input#year");
-
-  // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", (event) => {
     event.preventDefault();
     const userData = {
@@ -23,7 +22,6 @@ $(document).ready(() => {
       !userData.country ||
       !userData.year
     ) {
-      $("#alert").text("all fields required");
       return;
     }
     enterWine(
@@ -39,4 +37,16 @@ $(document).ready(() => {
     region.val("");
     year.val("");
   });
+  function enterWine(wine_name, category, country, region, year) {
+    $.post("/api/wines", {
+      wine_name: wine_name,
+      category: category,
+      country: country,
+      region: region,
+      year: year,
+    }).then(() => {
+      window.location.replace("/winerate");
+      // If there's an error, handle it by throwing up a bootstrap alert
+    });
+  }
 });
