@@ -10,17 +10,17 @@ module.exports = (app) => {
     });
   });
 
-  app.get("/api/users/:id", (req, res) => {
-    db.User.findOne({
-      where: {
-        id: req.params.id,
-      },
-    })
-      //TODO remove password from return.
-      .then((dbUser) => res.json(dbUser))
-      //add .catch
-      .catch((error) => console.log({ error }));
-  });
+  // app.get("/api/users/:id", (req, res) => {
+  //   db.User.findOne({
+  //     where: {
+  //       id: req.params.id,
+  //     },
+  //   })
+  //     //TODO remove password from return.
+  //     .then((dbUser) => res.json(dbUser))
+  //     //add .catch
+  //     .catch((error) => console.log({ error }));
+  // });
 
   app.post("/api/users", (req, res) => {
     console.log("Hello");
@@ -29,11 +29,11 @@ module.exports = (app) => {
       .catch((error) => res.status(500).json({ error }));
   });
 
-  app.delete("/api/users/:id", (req, res) => {
-    db.User.destroy({
-      where: {
-        id: req.params.id,
-      },
-    }).then((dbUser) => res.json(dbUser));
-  });
+  // app.delete("/api/users/:id", (req, res) => {
+  //   db.User.destroy({
+  //     where: {
+  //       id: req.params.id,
+  //     },
+  //   }).then((dbUser) => res.json(dbUser));
+  // });
 };
