@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  console.log("hello 1");
   // Getting references to our form and input
   const signUpForm = $("form.signup");
   const nameInput = $("input#name-input");
@@ -9,7 +8,6 @@ $(document).ready(() => {
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", (event) => {
-    console.log("Hello");
     event.preventDefault();
 
     const userData = {
@@ -19,10 +17,18 @@ $(document).ready(() => {
       confirmPassword: confirmPassword.val().trim(),
     };
 
-    if (!userData.name || !userData.email || !userData.password) {
+    if (
+      !userData.name ||
+      !userData.email ||
+      !userData.password ||
+      !userData.confirmPassword
+    ) {
+      $("#alert").text("all fields required");
       return;
     }
     if (!(userData.password === userData.confirmPassword)) {
+      $("#alert").text("passwords don't match");
+
       return;
     }
     // If we have an email and password, run the signUpUser function
@@ -30,6 +36,7 @@ $(document).ready(() => {
     nameInput.val("");
     emailInput.val("");
     passwordInput.val("");
+    confirmPassword.val("");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
@@ -41,7 +48,6 @@ $(document).ready(() => {
       password: password,
     }) // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        console.log(data);
         // window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
@@ -49,7 +55,14 @@ $(document).ready(() => {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+    const customErrorMessage = {
+      ValidationisEmailonemailfailed: "Please input a valid email address",
+    };
+    const dbError = _.get(
+      err,
+      "responseJSON.error.errors[0].message"
+    ).replaceAll(" ", "");
+    $("#alert").text(customErrorMessage[dbError] || "Something went wrong");
     $("#alert").fadeIn(500);
   }
 });
