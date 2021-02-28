@@ -23,11 +23,11 @@ $(document).ready(() => {
       !userData.password ||
       !userData.confirmPassword
     ) {
-      $("#alert").text("all fields required");
+      $("#alert").show().text("all fields required");
       return;
     }
     if (!(userData.password === userData.confirmPassword)) {
-      $("#alert").text("passwords don't match");
+      $("#alert").show().text("passwords don't match");
 
       return;
     }
@@ -62,7 +62,9 @@ $(document).ready(() => {
       err,
       "responseJSON.error.errors[0].message"
     ).replaceAll(" ", "");
-    $("#alert").text(customErrorMessage[dbError] || "Something went wrong");
+    $("#alert")
+      .show()
+      .text(customErrorMessage[dbError] || "Something went wrong");
     $("#alert").fadeIn(500);
   }
 });
