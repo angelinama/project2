@@ -9,6 +9,7 @@ const htmlRoutes = require("./routes/html-routes.js");
 const wineRouter = require("./routes/wine-api-routes.js");
 const userRouter = require("./routes/user-api-routes.js");
 const reviewRouter = require("./routes/review-api-routes.js");
+const bucketlistRouter = require("./routes/bucketlist-api-routes.js");
 
 // Sets up the Express App
 const app = express();
@@ -37,6 +38,7 @@ wineRouter(app);
 userRouter(app);
 reviewRouter(app);
 htmlRoutes(app);
+bucketlistRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync().then(() => {
