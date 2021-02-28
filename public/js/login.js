@@ -18,13 +18,16 @@ $(document).ready(() => {
     emailInput.val("");
     passwordInput.val("");
   });
+  function clearClientSession() {
+    localStorage.removeItem("user");
+    $("#logout").hide();
+  }
   function logOut() {
     console.log("I'm logging out");
     $.get("/logout")
       .then((data) => {
         console.log(data);
-        localStorage.removeItem("user");
-        $("#logout").hide();
+        clearClientSession();
         window.location.replace("/");
       })
       .catch((err) => {
