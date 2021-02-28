@@ -28,7 +28,11 @@ module.exports = (app) => {
   });
 
   app.post("/api/reviews", (req, res) => {
-    db.Review.create(req.body)
+    const reviewObj = {
+      ...req.body,
+      // user_id: req.user.id,
+    };
+    db.Review.create(reviewObj)
       .then((dbReveiw) => res.json(dbReveiw))
       .catch((err) => {
         //TODO should add users api and bucketlist
