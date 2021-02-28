@@ -31,6 +31,7 @@ module.exports = (app) => {
     db.Review.create(req.body)
       .then((dbReveiw) => res.json(dbReveiw))
       .catch((err) => {
+        //TODO should add users api and bucketlist
         if (err instanceof Sequelize.ValidationError) {
           let msg = "";
           for (const e of err.errors) {

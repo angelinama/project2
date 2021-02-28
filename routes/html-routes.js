@@ -26,4 +26,8 @@ module.exports = (app) => {
   app.get("/winerate", (req, res) => {
     res.render("../views/winerate.handlebars");
   });
+  //render the bucketlist page in browser
+  app.get("/bucketlist", (req, res) => {
+    res.render("../views/bucketlist.handlebars");
+  });
 };
