@@ -1,13 +1,13 @@
 $(document).ready(() => {
   console.log("start entering wine");
   // Getting references to our form and input
-  const signUpForm = $("form.signup");
+  const wineentryForm = $("form.wineentry");
   const wine_name = $("input#wine_name");
   const category = $("input#category");
   const country = $("input#country");
   const region = $("input#region");
   const year = $("input#year");
-  signUpForm.on("submit", (event) => {
+  wineentryForm.on("submit", (event) => {
     event.preventDefault();
     const userData = {
       wine_name: wine_name.val().trim(),
