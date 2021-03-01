@@ -1,9 +1,4 @@
-//todo change this to get from handlebars
-const wineId = 1;
-
 $(document).ready(() => {
-  const reqObj = {};
-
   const wineratingForm = $("form.winerate");
   const aromaFruit = $("#fruit");
   const aromaHerbal = $("#herbal");
@@ -11,6 +6,8 @@ $(document).ready(() => {
   const aromaFloral = $("#floral");
   const aromaSpice = $("#spice");
   const aromaChemical = $("#chemical");
+  const wineId = $("#wineId").val();
+  const reqObj = { wine_id: wineId };
 
   wineratingForm.on("submit", (event) => {
     event.preventDefault();
@@ -29,7 +26,7 @@ $(document).ready(() => {
 
     console.log(reqObj);
 
-    $.post(`/api/reviews/wine/${wineId}`, reqObj)
+    $.post("/api/reviews", reqObj)
       .then((data) => {
         console.log(data);
         //should redirect to detail page for a wine

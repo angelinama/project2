@@ -27,12 +27,11 @@ module.exports = (app) => {
       });
   });
 
-  app.post("/api/reviews/wine/:wineId", (req, res) => {
+  app.post("/api/reviews", (req, res) => {
     const reviewObj = {
       ...req.body,
       // user_id: req.user.id,
       user_id: 1,
-      wine_id: req.params.wineId,
     };
     db.Review.create(reviewObj)
       .then((dbReveiw) => res.json(dbReveiw))
