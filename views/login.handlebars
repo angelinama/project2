@@ -1,17 +1,27 @@
-    <!-- login page -START -->
-    <div data-screen="login">
-      
-      <h1>Wine Log</h1>
-      <img src="images/logo.png" alt="logo" />
-      <form class="login">
-        <label for="email-input">Your Email</label>
-        <input id="email-input" type="text" placeholder="Email" />
-        <label for="password-input">Your Password</label>
-        <input id="password-input" type="password" placeholder="Password" />
-        <button type="submit">Log In</button>
-      </form>
-      <p>Or sign up if you need an account</p>
-      <a href="/signup" class="screenswitch">Sign Up</a>
+<div id="loginbody">
+  <div class="row justify-content-center">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <!-- login page -START -->
+      <div data-screen="login">
+        <div class="row">
+          <div class="col-md-10 firstpglogo">
+            <img class="img-fluid" src="./images/winelog_logo2_a.png" alt="Winelog Logo" />
+          </div>
+        </div>
+        <form class="login row mb-5">
+          <label for="email-input">Your Email</label>
+          <input class="form-control-sm" id="email-input" type="text" placeholder="Email" />
+          <label for="password-input">Your Password</label>
+          <input class="form-control-sm" id="password-input" type="password" placeholder="Password" />
+          <button class="btn-secondary" type="submit" id="loginsubmit">Log In</button>
+        </form>
+        <p>Or sign up if you need an account</p>
+        <a href="/signup" class="screenswitch">Sign Up</a>
 
+      </div>
+      <!-- login page -END -->
     </div>
-    <!-- login page -END -->
+    <div class="col-md-4"></div>
+  </div>
+</div>

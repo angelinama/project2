@@ -1,12 +1,48 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+}
+a {
+    color: #f7bf45;
+}
+a:hover {
+    color: #847c41;
+}
+
 #loginbody {
-    color: #6E1C1C;
+    color: white;
+    font-weight: 300;
+    background-color: #441215;
+    height: 100vh;
+    width: 100vw;
+    padding-left: 20px;
+}
+
+.firstpglogo {
+    padding-top: 35px;
+    padding-bottom: 10px;
 }
 
 .wlcm {
-    padding-top: 25px;
-    color: #6E1C1C;
-    text-align: center;
-    font-weight: bolder;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: #f7bf45;
+    font-weight: 400;
+}
+
+.btn-secondary, .btn-secondary:visited {
+    background-color: #847c41 !important;
+    border: #847c41 !important;
+    width: 150px;
+}
+.btn-secondary:hover, .btn-secondary:active  {
+    background-color: #f7bf45 !important;
+    border: #f7bf45 !important;
+}
+
+#signupbutton, #signupsubmit, #loginsubmit {
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 .btn-responsive {
