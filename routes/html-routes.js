@@ -57,4 +57,10 @@ module.exports = (app) => {
   app.get("/winerate-:wineId", (req, res) => {
     res.render("../views/winerate.handlebars", { wineId: req.params.wineId });
   });
+
+  app.get("/winesummary-:wineId", (req, res) => {
+    res.render("../views/wineSummary.handlebars", {
+      wineId: req.params.wineId,
+    });
+  });
 };

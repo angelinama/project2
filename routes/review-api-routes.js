@@ -14,10 +14,10 @@ module.exports = (app) => {
       });
   });
 
-  app.get("/api/reviews/:id", (req, res) => {
+  app.get("/api/reviews/:wineId", (req, res) => {
     db.Review.findOne({
       where: {
-        id: req.params.id,
+        wine_id: req.params.wineId,
       },
     })
       .then((dbReview) => res.json(dbReview))
