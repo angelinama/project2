@@ -45,11 +45,11 @@ module.exports = (app) => {
   });
 
   //delete one
-  app.delete("/api/bucketlist/:id", (req, res) => {
+  app.delete("/api/bucketlists/:id", (req, res) => {
     if (req.user) {
       db.Bucketlist.destroy({
         where: {
-          id: req.params.id,
+          wine_id: req.params.id,
         },
       })
         .then((bucketlistEntry) => res.json(bucketlistEntry))
