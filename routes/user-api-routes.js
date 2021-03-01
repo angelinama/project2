@@ -26,14 +26,13 @@ module.exports = (app) => {
     console.log("Hello");
     db.User.create(req.body)
       .then((dbUser) => res.json(dbUser))
+      // TODO in catch also add sequelize validation see review-api :34
       .catch((error) => res.status(500).json({ error }));
   });
 
-  // app.delete("/api/users/:id", (req, res) => {
-  //   db.User.destroy({
-  //     where: {
-  //       id: req.params.id,
-  //     },
-  //   }).then((dbUser) => res.json(dbUser));
-  // });
+  // Route for logging user out
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.status(200).json({});
+  });
 };
