@@ -33,6 +33,11 @@ $(document).ready(() => {
         // window.location.href = "/<summary page>";
         window.location.href = "/api/reviews";
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.status === 401) {
+          alert(error.responseText);
+          window.location.href = "/";
+        }
+      });
   });
 });

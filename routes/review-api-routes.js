@@ -48,7 +48,7 @@ module.exports = (app) => {
           }
         });
     } else {
-      res.redirect("/");
+      res.status(401).send("You haven't logged in!");
     }
   });
 
