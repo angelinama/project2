@@ -1,21 +1,47 @@
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+a {
+    color: #f7bf45;
+}
+a:hover {
+    color: #847c41;
 }
 
 #loginbody {
     color: white;
-    font-weight: 500;
-    background-color: #6E1C1C;
+    font-weight: 300;
+    background-color: #441215;
     height: 100vh;
     width: 100vw;
-    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.firstpglogo {
+    padding-top: 35px;
+    padding-bottom: 10px;
 }
 
 .wlcm {
-    padding-top: 25px;
-    color: #6E1C1C;
-    text-align: center;
-    font-weight: bolder;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    color: #f7bf45;
+    font-weight: 400;
+}
+
+.btn-secondary, .btn-secondary:visited {
+    background-color: #847c41 !important;
+    border: #847c41 !important;
+    width: 150px;
+}
+.btn-secondary:hover, .btn-secondary:active  {
+    background-color: #847c41 !important;
+    border: #847c41 !important;
+}
+
+#signupbutton {
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .btn-responsive {
