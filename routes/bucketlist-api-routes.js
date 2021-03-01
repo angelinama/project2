@@ -23,7 +23,7 @@ module.exports = (app) => {
   //add one (post)
   app.post("/api/bucketlist", (req, res) => {
     console.log(req.user.id);
-    if (req.res) {
+    if (req.user) {
       req.body.user_id = req.user.id;
       db.Bucketlist.create(req.body)
         .then((bucketlistEntry) => res.json(bucketlistEntry))
