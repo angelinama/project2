@@ -50,6 +50,6 @@ module.exports = (app) => {
   });
   //render the winerate page in browser
   app.get("/winerate", (req, res) => {
-    res.render("../views/winerate.handlebars");
+    res.render("../views/winerate.handlebars", { wineId: req.params.wineId });
   });
 };

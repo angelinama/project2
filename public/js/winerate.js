@@ -1,4 +1,5 @@
-const wineId = 1; //this should get from the page by either url
+//todo change this to get from handlebars
+const wineId = 1;
 
 $(document).ready(() => {
   const reqObj = {};
