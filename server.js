@@ -30,7 +30,7 @@ app.use(passport.session());
 // Static directory
 app.use(express.static("public"));
 
-// Set Handlebars. --Carolina
+// Set Handlebars
 const exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

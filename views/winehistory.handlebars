@@ -1,12 +1,17 @@
 <div class="container-fluid winelogbody">
     <header class="row justify-content-center wlcm">
         <div class="col-10">
+            {{#if favorite}}
+            <h1>FAVORITES</h1>
+            {{else}}
             <h1>WINE HISTORY</h1>
+            {{/if}}
         </div>
     </header>
     <div class="row justify-content-center">
         <ul>
             {{#each wines}}
+            {{> winehistory/winehistory-block}}
             {{/each}}
         </ul>
     </div>
