@@ -1,8 +1,4 @@
-const wineId = 1; //this should get from the page by either url
-
 $(document).ready(() => {
-  const reqObj = {};
-
   const wineratingForm = $("form.winerate");
   const aromaFruit = $("#fruit");
   const aromaHerbal = $("#herbal");
@@ -10,6 +6,8 @@ $(document).ready(() => {
   const aromaFloral = $("#floral");
   const aromaSpice = $("#spice");
   const aromaChemical = $("#chemical");
+  const wineId = $("#wineId").val();
+  const reqObj = { wine_id: wineId };
 
   wineratingForm.on("submit", (event) => {
     event.preventDefault();
@@ -26,14 +24,20 @@ $(document).ready(() => {
     reqObj.spice = $(aromaSpice)[0].checked ? true : false;
     reqObj.chemical = $(aromaChemical)[0].checked ? true : false;
 
-    console.log(reqObj);
+    // console.log(reqObj);
 
-    $.post(`/api/reviews/wine/${wineId}`, reqObj)
+    $.post("/api/reviews", reqObj)
       .then((data) => {
         console.log(data);
-        //should redirect to detail page for a wine
-        // window.location.href = "/";
+        //TODO should redirect to summary page for a wine
+        // window.location.href = "/<summary page>";
+        window.location.href = "/api/reviews";
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.status === 401) {
+          alert(error.responseText);
+          window.location.href = "/";
+        }
+      });
   });
 });
