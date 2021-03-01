@@ -1,54 +1,43 @@
-let overAllScore = null,
-  sweetnessScore = null,
-  acidityScore = null,
-  tannisScore = null,
-  bodyScore = null;
-
 $(document).ready(() => {
   const wineratingForm = $("form.winerate");
-  // const aromaFruit = $("input#fruit");
-  // const aromaHerbal = $("input#herbal");
-  // const aromaEarth = $("input#earth");
-  // const aromaFloral = $("input#floral");
-  // const aromaSpice = $("input#spice");
-
-  $("input[name='allrating']").on("click", () => {
-    overAllScore = $("input:checked", ".allrating").val();
-  });
-
-  $("input[name='sweetness']").on("click", () => {
-    sweetnessScore = $("input:checked", ".sweetness").val();
-  });
-
-  $("input[name='acidity']").on("click", () => {
-    console.log($("input:checked", ".acidity").val() + "checked!");
-    acidityScore = $("input:checked", ".acidity").val();
-  });
-
-  $("input[name='tannins']").on("click", () => {
-    tannisScore = $("input:checked", ".tannins").val();
-  });
-
-  $("input[name='wbody']").on("click", () => {
-    bodyScore = $("input:checked", ".wbody").val();
-  });
+  const aromaFruit = $("#fruit");
+  const aromaHerbal = $("#herbal");
+  const aromaEarth = $("#earth");
+  const aromaFloral = $("#floral");
+  const aromaSpice = $("#spice");
+  const aromaChemical = $("#chemical");
+  const wineId = $("#wineId").val();
+  const reqObj = { wine_id: wineId };
 
   wineratingForm.on("submit", (event) => {
     event.preventDefault();
-    $.post("/api/reviews", {
-      user_id: 1,
-      wine_id: 1,
-      overall_score: overAllScore,
-      sweetness_score: sweetnessScore,
-      acidity_score: acidityScore,
-      tannis_score: tannisScore,
-      body_score: bodyScore,
-    })
+    reqObj.overall_score = $("input:checked", ".allrating").val();
+    reqObj.sweetness_score = $("input:checked", ".sweetness").val();
+    reqObj.acidity_score = $("input:checked", ".acidity").val();
+    reqObj.tannis_score = $("input:checked", ".tannins").val();
+    reqObj.body_score = $("input:checked", ".wbody").val();
+
+    reqObj.fruity = $(aromaFruit)[0].checked ? true : false;
+    reqObj.herbal = $(aromaHerbal)[0].checked ? true : false;
+    reqObj.earth = $(aromaEarth)[0].checked ? true : false;
+    reqObj.floral = $(aromaFloral)[0].checked ? true : false;
+    reqObj.spice = $(aromaSpice)[0].checked ? true : false;
+    reqObj.chemical = $(aromaChemical)[0].checked ? true : false;
+
+    // console.log(reqObj);
+
+    $.post("/api/reviews", reqObj)
       .then((data) => {
         console.log(data);
-        //should redirect to detail page for a wine
-        // window.location.href = "/";
+        //TODO should redirect to summary page for a wine
+        // window.location.href = "/<summary page>";
+        window.location.href = "/api/reviews";
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        if (error.status === 401) {
+          alert(error.responseText);
+          window.location.href = "/";
+        }
+      });
   });
 });

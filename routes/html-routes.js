@@ -1,3 +1,5 @@
+const db = require("../models");
+
 module.exports = (app) => {
   app.get("/", (req, res) => {
     res.render("../views/init.handlebars");
@@ -22,8 +24,32 @@ module.exports = (app) => {
   app.get("/wineentry", (req, res) => {
     res.render("../views/wineentry.handlebars");
   });
+  //render the bucketlist page in browser
+  app.get("/bucketlist", (req, res) => {
+    db.Bucketlist.findAll({
+      where: {
+        user_id: req.user.id,
+      },
+      include: [db.Wine],
+    }).then((data) => {
+      console.log(
+        data.map((entry) => {
+          return entry.dataValues.Wine.dataValues;
+        })
+      );
+      res.render("../views/bucketlist.handlebars", {
+        wines: data.map((entry) => {
+          return entry.dataValues.Wine.dataValues;
+        }),
+      });
+    });
+  });
+  //render the wineentry page in browser
+  app.get("/winehistory", (req, res) => {
+    res.render("../views/winehistory.handlebars");
+  });
   //render the winerate page in browser
-  app.get("/winerate", (req, res) => {
-    res.render("../views/winerate.handlebars");
+  app.get("/winerate-:wineId", (req, res) => {
+    res.render("../views/winerate.handlebars", { wineId: req.params.wineId });
   });
 };
