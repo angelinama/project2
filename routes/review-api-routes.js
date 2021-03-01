@@ -1,6 +1,5 @@
 const db = require("../models");
 const Sequelize = require("sequelize");
-const passport = require("../config/passport");
 
 module.exports = (app) => {
   app.get("/api/reviews", (req, res) => {
@@ -38,7 +37,6 @@ module.exports = (app) => {
     db.Review.create(reviewObj)
       .then((dbReveiw) => res.json(dbReveiw))
       .catch((err) => {
-        //TODO should add users api and bucketlist
         if (err instanceof Sequelize.ValidationError) {
           let msg = "";
           for (const e of err.errors) {
