@@ -1,5 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
+    font-size: medium;
 }
 a {
     color: #f7bf45;
@@ -35,13 +36,13 @@ a:hover {
     width: 150px;
 }
 .btn-secondary:hover, .btn-secondary:active  {
-    background-color: #847c41 !important;
-    border: #847c41 !important;
+    background-color: #f7bf45 !important;
+    border: #f7bf45 !important;
 }
 
-#signupbutton {
+#signupbutton, #signupsubmit {
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .btn-responsive {
