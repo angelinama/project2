@@ -1,5 +1,6 @@
 const db = require("../models");
 const Sequelize = require("sequelize");
+const passport = require("../config/passport");
 
 module.exports = (app) => {
   app.get("/api/reviews", (req, res) => {
@@ -27,10 +28,12 @@ module.exports = (app) => {
       });
   });
 
-  app.post("/api/reviews", (req, res) => {
+  app.post("/api/reviews/wine/:wineId", (req, res) => {
     const reviewObj = {
       ...req.body,
       // user_id: req.user.id,
+      user_id: 1,
+      wine_id: req.params.wineId,
     };
     db.Review.create(reviewObj)
       .then((dbReveiw) => res.json(dbReveiw))
