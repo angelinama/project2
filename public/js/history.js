@@ -3,7 +3,7 @@ $(document).ready(() => {
   function fetchHistorylist() {
     const user = localStorage.getItem("user");
     const userId = JSON.parse(user).id;
-    $.get(`/api/historylist/${userId}`)
+    $.get(`/api/history/${userId}`)
       .then((data) => {
         //data contains id of wine in bucketlist of this user
         console.log(data);
@@ -21,4 +21,4 @@ $(document).ready(() => {
       });
   }
   fetchHistorylist();
-})
+});
