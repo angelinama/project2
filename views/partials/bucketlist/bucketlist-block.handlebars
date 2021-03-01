@@ -1,4 +1,12 @@
-<li> <span>{{wine_name}}</span> 
-  <button class="from-bucket-to-history">Add to History</button>
+<li> 
+  <span>
+    {{wine_name}}
+  </span> 
+  {{#if tohistory}}
+  <button class="move-bucket" data-id="{{id}}" data-newtohistory="{{tohistory}}">
+    Add to History
+  </button>
+  {{/if}}
+  {{!-- delete button  --}}
   <button class="delete-bucket" data-id="{{id}}">Delete</button>
 </li>
