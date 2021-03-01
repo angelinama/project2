@@ -37,6 +37,9 @@ $(document).ready(() => {
         if (error.status === 401) {
           alert(error.responseText);
           window.location.href = "/";
+        } else {
+          console.log(error);
+          alert("something went wrong when submitting a review");
         }
       });
   });
