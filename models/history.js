@@ -1,8 +1,9 @@
 "use strict";
 
-module.exports = (sequelize) => {
-  const History = sequelize.define("History", {});
-
+module.exports = (sequelize, DataTypes) => {
+  const History = sequelize.define("History", {
+    favorite: { type: DataTypes.BOOLEAN, defaultValue: false },
+  });
   History.associate = (models) => {
     History.belongsTo(models.Wine, {
       foreignKey: {
