@@ -29,17 +29,29 @@ $(document).ready(() => {
       button.addEventListener("click", (e) => {
         // Grabs the id of the element that goes by the name, "id"
         const id = e.target.getAttribute("data-id");
-        const wineId = e.target.getAttribute("data-wine");
-        $.post("/api/reviews", { wine_id: wineId }).then((response) => {
-          // Check that the response is all good
-          // Reload the page so the user can see the new state
-          if (response.ok) {
+        //TODO change this to history API instead of review
+        $.post("/api/reviews", { wine_id: id })
+          .then((response) => {
+            // Reload the page so the user can see the new state
+            console.log(response);
             console.log(`moved wine: ${id}`);
-            location.reload("/");
-          } else {
-            alert("something went wrong!");
-          }
-        });
+            return fetch(`/api/bucketlists/${id}`, {
+              method: "DELETE",
+            });
+          })
+          .then((response) => {
+            // Check that the response is all good
+            // Reload the page so the user can see the new state
+            if (response.ok) {
+              console.log(`deleted wine: ${id}`);
+              location.reload("/");
+            } else {
+              alert(
+                "Delete from bucketlist went wrong during moving to wine History!"
+              );
+            }
+          })
+          .catch((err) => console.log(err));
       });
     });
   }
