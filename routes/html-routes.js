@@ -49,7 +49,7 @@ module.exports = (app) => {
     res.render("../views/winehistory.handlebars");
   });
   //render the winerate page in browser
-  app.get("/winerate", (req, res) => {
+  app.get("/winerate/:wineId", (req, res) => {
     res.render("../views/winerate.handlebars", { wineId: req.params.wineId });
   });
 };
