@@ -22,11 +22,12 @@ module.exports = (app) => {
   });
   //add one (post)
   app.post("/api/bucketlist", (req, res) => {
+    console.log(req.user.id);
     if (req.res) {
+      req.body.user_id = req.user.id;
       db.Bucketlist.create(req.body)
         .then((bucketlistEntry) => res.json(bucketlistEntry))
         .catch((err) => {
-          //TODO should add users api and bucketlist
           if (err instanceof Sequelize.ValidationError) {
             let msg = "";
             for (const e of err.errors) {

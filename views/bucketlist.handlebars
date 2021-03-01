@@ -6,10 +6,9 @@
     </header>
     <div class="row justify-content-center">
         <ul>
-          <li> <span>Opus One</span> 
-          <button>Add to History</button>
-          <button>Delete</button>
-          </li>
+        {{#each wines}}
+        {{> bucketlist/bucketlist-block}}
+        {{/each}}
         </ul>
     </div>
       <script src="./js/bucketlist.js"></script>
