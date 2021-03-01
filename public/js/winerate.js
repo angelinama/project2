@@ -28,7 +28,7 @@ $(document).ready(() => {
 
     console.log(reqObj);
 
-    $.post(`/api/reviews/wine/${wineId}/${userId}`, reqObj)
+    $.post(`/api/reviews/wine/${wineId}`, reqObj)
       .then((data) => {
         console.log(data);
         //should redirect to detail page for a wine
