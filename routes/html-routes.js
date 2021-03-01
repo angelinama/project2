@@ -1,19 +1,24 @@
 const db = require("../models");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = (app) => {
   app.get("/", (req, res) => {
     res.render("../views/init.handlebars");
   });
-
   app.get("/login", (req, res) => {
+    if (req.user) {
+      res.redirect("/welcome");
+    }
     res.render("../views/login.handlebars");
   });
-
   app.get("/signup", (req, res) => {
+    if (req.user) {
+      res.redirect("/welcome");
+    }
     res.render("../views/signup.handlebars");
   });
   //render the welcome page in browser
-  app.get("/welcome", (req, res) => {
+  app.get("/welcome", isAuthenticated, (req, res) => {
     res.render("../views/welcome.handlebars");
   });
   //render the winestart page in browser
