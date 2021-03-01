@@ -7,6 +7,12 @@ $(document).ready(() => {
   const country = $("input#country");
   const region = $("input#region");
   const year = $("input#year");
+  wineentryForm.on("keydown", (event) => {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
   wineentryForm.on("submit", (event) => {
     event.preventDefault();
     const userData = {
@@ -29,7 +35,8 @@ $(document).ready(() => {
       userData.category,
       userData.country,
       userData.region,
-      userData.year
+      userData.year,
+      event.originalEvent.submitter.id
     );
     wine_name.val("");
     category.val("");
@@ -37,16 +44,32 @@ $(document).ready(() => {
     region.val("");
     year.val("");
   });
-  function enterWine(wine_name, category, country, region, year) {
+  function enterWine(wine_name, category, country, region, year, next_page) {
     $.post("/api/wines", {
       wine_name: wine_name,
       category: category,
       country: country,
       region: region,
       year: year,
-    }).then(() => {
-      window.location.replace("/winerate");
-      // If there's an error, handle it by throwing up a bootstrap alert
-    });
+    })
+      .then((data) => {
+        if (next_page === "bucketlist") {
+          $.post("/api/bucketlist", {
+            wine_id: data.id,
+          })
+            .then(() => {
+              window.location.replace("/bucketlist");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          window.location.replace("/winehistory");
+        } // If there's an error, handle it by throwing up a bootstrap alert
+      })
+      .catch((err) => {
+        console.log(err);
+        $("#alert").show().text("Unable to create this wine log");
+      });
   }
 });

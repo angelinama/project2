@@ -1,1 +1,15 @@
-//TODO 
+<div class="container-fluid winelogbody">
+    <header class="row justify-content-center wlcm">
+        <div class="col-10">
+            <h1>BUCKETLIST</h1>
+        </div>
+    </header>
+    <div class="row justify-content-center">
+        <ul>
+        {{#each wines}}
+        {{> bucketlist/bucketlist-block}}
+        {{/each}}
+        </ul>
+    </div>
+      <script src="./js/bucketlist.js"></script>
+</div>
