@@ -30,8 +30,7 @@ $(document).ready(() => {
       .then((data) => {
         console.log(data);
         //TODO should redirect to summary page for a wine
-        // window.location.href = "/<summary page>";
-        window.location.href = "/api/reviews";
+        window.location.href = `/winesummary-${wineId}`;
       })
       .catch((error) => {
         if (error.status === 401) {
