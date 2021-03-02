@@ -52,9 +52,6 @@ a:hover {
     width: 100vw;
 }
 
-.navbar-nav > li > a {padding-top:3px !important; padding-bottom:3px !important;}
-.navbar {min-height:35px !important}
-
 .btn-responsive {
     width: 120px;
     height: 120px;
