@@ -17,9 +17,15 @@ a:hover {
     width: 100vw;
 }
 
+.middleone {
+    padding:30px;
+}
+
 .firstpglogo {
     padding-top: 35px;
     padding-bottom: 10px;
+    width: 225px;
+
 }
 
 .wlcm {
@@ -27,6 +33,13 @@ a:hover {
     padding-bottom: 10px;
     color: #f7bf45;
     font-weight: 400;
+}
+
+.pagetitle {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #761916;
+    font-weight: 600;
 }
 
 .btn-secondary, .btn-secondary:visited {
@@ -37,6 +50,10 @@ a:hover {
 .btn-secondary:hover, .btn-secondary:active  {
     background-color: #f7bf45 !important;
     border: #f7bf45 !important;
+}
+
+.details, .deletehistory {
+    width: 120px;
 }
 
 #signupbutton, #signupsubmit, #loginsubmit {
