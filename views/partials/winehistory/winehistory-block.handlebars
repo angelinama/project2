@@ -5,9 +5,7 @@
   <span>
     {{wine_id}}
   </span>
-  <button class="details" data-id="{{id}}">
-    <a href="/winesummary-{{id}}">See Details</a>
-  </button>
+  <a href="/winesummary-{{id}}" class="btn btn-outline-success btn-sm details" data-id="{{id}}">See Details</a>
   {{!-- delete button --}}
-  <button class="delete-history" data-id="{{id}}">Delete</button>
+  <button class="btn btn-danger btn-sm delete-history" data-id="{{id}}">Delete</button>
 </li>
