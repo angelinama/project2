@@ -43,12 +43,13 @@ module.exports = (app) => {
       res.status(401).json({ error: "Please log in" });
     }
   });
+  //delete one
   app.delete("/api/winehistory/:id", (req, res) => {
+    console.log(req.params.id);
     if (req.user) {
       db.History.destroy({
         where: {
-          wine_id: req.params.id,
-          user_id: req.user.id,
+          id: req.params.id,
         },
       })
         .then((historyEntry) => res.json(historyEntry))

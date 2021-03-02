@@ -1,4 +1,5 @@
 $(document).ready(() => {
+  $("#logout").hide();
   // Getting references to our form and inputs
   const loginForm = $("form.login");
   const emailInput = $("input#email-input");
@@ -18,22 +19,6 @@ $(document).ready(() => {
     emailInput.val("");
     passwordInput.val("");
   });
-  function clearClientSession() {
-    localStorage.removeItem("user");
-    $("#logout").hide();
-  }
-  function logOut() {
-    console.log("I'm logging out");
-    $.get("/logout")
-      .then((data) => {
-        console.log(data);
-        clearClientSession();
-        window.location.replace("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
     $.get("/api/users", {
@@ -44,7 +29,6 @@ $(document).ready(() => {
         console.log("signin success", data);
         localStorage.setItem("user", JSON.stringify(data));
         $("#logout").show();
-        $("#logout").click(logOut);
         window.location.replace("/welcome");
       })
       .catch((err) => {
@@ -53,7 +37,7 @@ $(document).ready(() => {
   }
   const user = localStorage.getItem("user");
   if (user) {
-    $("#logout").show().click(logOut);
+    $("#logout").show();
   } else {
     $("#logout").hide();
   }
