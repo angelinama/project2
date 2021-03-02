@@ -1,20 +1,23 @@
 {{> navbar/navbar-block}}
-<div class="container-fluid mainbodynav winelogbody">
-    <header class="row justify-content-center wlcm">
-        <div class="col-10">
-            {{#if favorite}}
-            <h1>FAVORITES</h1>
-            {{else}}
-            <h1>WINE HISTORY</h1>
-            {{/if}}
-        </div>
-    </header>
+<div class="container-fluid mainbodynav">
     <div class="row justify-content-center">
-        <ul>
-            {{#each wines}}
-            {{> winehistory/winehistory-block}}
-            {{/each}}
-        </ul>
+        <div class="col-md-2"></div>
+        <div class="col-md-8 middleone">
+            <div class="row">
+                {{#if favorite}}
+                <h1 class="pagetitle">FAVORITES</h1>
+                {{else}}
+                <h1 class="pagetitle">WINE HISTORY</h1>
+                    {{/if}}
+            </div>
+            <div class="row">
+                <ul class= "my-6">
+                    {{#each wines}}
+                    {{> winehistory/winehistory-block}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 {{> footer/footer-block}}
