@@ -1,7 +1,7 @@
 {{> navbar/navbar-block}}
 <div class="container-fluid mainbodynav">
     <div class="row justify-content-center">
-        <div class="col-md-2"></div>
+        {{!-- <div class="col-md-2"></div> --}}
         <div class="col-md-8 middleone">
             <div class="row">
                 {{#if favorite}}
@@ -11,11 +11,22 @@
                     {{/if}}
             </div>
             <div class="row">
-                <ul class= "my-6">
+                <ul>
+                    {{#if favorite}}
+                    {{#each wines}}
+                    {{> winehistory/favorite-block}}
+                    {{/each}}
+                    {{else}}
                     {{#each wines}}
                     {{> winehistory/winehistory-block}}
                     {{/each}}
+                    {{/if}}
                 </ul>
+                {{!--    <ul class= "my-6">
+                        {{#each wines}}
+                        {{> winehistory/winehistory-block}}
+                        {{/each}}
+                    </ul>--}}
             </div>
         </div>
     </div>

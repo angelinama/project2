@@ -52,6 +52,10 @@ a:hover {
     border: #f7bf45 !important;
 }
 
+.details, .deletehistory {
+    width: 120px;
+}
+
 #signupbutton, #signupsubmit, #loginsubmit {
     margin-top: 20px;
     margin-bottom: 15px;
