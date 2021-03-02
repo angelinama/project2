@@ -1,27 +1,52 @@
 {{> navbar/navbar-block}}
 <div class="container-fluid mainbodynav">
     <div class="row justify-content-center">
-        <div class="col-12">
-            <h1>LOG YOUR WINE</h1>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <form class="wineentry">
-            <label for="wine_name"class="form-label">Wine Name</label>
-            <input type="text"  name="wine_name" class="form-control" id="wine_name" placeholder="Enter the name of the wine">
-            <label for="category" class="form-label">Category</label>
-            <input type="text" name="category" class="form-control" id="category" placeholder="Red, White, Sparkling, Rose, Dessert, Fortified">
-            <label for="year" class="form-label">Year</label>
-            <input type="number" name="year" class="form-control" id="year" placeholder="1998">
-            <label for="country" class="form-label">County</label>
-            <input type="text" name="country" class="form-control" id="country" placeholder="https://github.com/mojoaxel/bootstrap-select-country">
-            <label for="region" class="form-label">Region</label>
-            <input type="text" name="region" class="form-control" id="region" placeholder="Bordeaux">
-            <div class="text-center mt">
-                <button id="winehistory" type="submit" class="btn btn-secondary">Add to History</button>
-                <button id="bucketlist" type="submit" class="btn btn-secondary">Add to Bucket List</button>
+        <div class="col-md-2"></div>
+        <div class="col-md-8 middleone">
+            <div class="row">
+                <h1 class: "pagetitle">LOG YOUR WINE</h1>
             </div>
-        </form>
+            <form class="wineentry">
+
+                <div class="row">
+                    <div class="mb-3">
+                        <label for="wine_name" class="form-label">Wine Name</label>
+                        <input type="text" name="wine_name" class="form-control" id="wine_name"
+                            placeholder="Enter the name of the wine">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <input type="text" name="category" class="form-control" id="category"
+                            placeholder="Red, White, Sparkling, Rose, Dessert, Fortified">
+                    </div>
+                    <div class="mb-3">
+                        <label for="year" class="form-label">Year</label>
+                        <input type="number" name="year" class="form-control" id="year" placeholder="1998">
+                    </div>
+                    <div class="mb-3">
+                        <label for="country" class="form-label">County</label>
+                        <input type="text" name="country" class="form-control" id="country" placeholder="country">
+                    </div>
+                    <div class="mb-3">
+                        <label for="region" class="form-label">Region</label>
+                        <input type="text" name="region" class="form-control" id="region" placeholder="Bordeaux">
+                    </div>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col-6 d-flex justify-content-end">
+                        <button id="winehistory" type="submit" class="btn btn-secondary"><span
+                                style="font-size:smaller;">Add to
+                                History</span></button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-start">
+                        <button id="bucketlist" type="submit" class="btn btn-secondary"><span
+                                style="font-size:smaller;">Add to Bucket
+                                List</span></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
     </div>
 </div>
 {{> footer/footer-block}}
