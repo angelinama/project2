@@ -20,6 +20,27 @@ module.exports = (app) => {
       res.status(401).json({ error: "Please log in" });
     }
   });
+  //get one wine history
+  app.get("/api/winehistory/wine/:wineId", (req, res) => {
+    if (req.user) {
+      db.History.findOne({
+        where: {
+          user_id: req.user.id,
+          wine_id: req.params.wineId,
+        },
+      })
+        .then((history) => {
+          res.json(history);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send("Something went wrong");
+        });
+    } else {
+      res.status(401).json({ error: "Please log in" });
+    }
+  });
+
   app.post("/api/winehistory", (req, res) => {
     console.log(req.user.id);
     if (req.user) {

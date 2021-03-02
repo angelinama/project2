@@ -11,10 +11,7 @@ $(document).ready(() => {
 
   $.get(`/api/wines/${wineId}`).then((data) => {
     console.log(data);
-    d3.select("#wineName")
-      .text(data.wine_name)
-      .style("background-color", "#441215")
-      .style("color", "white");
+    d3.select("#wineName").text(data.wine_name);
   });
 
   wineratingForm.on("submit", (event) => {
@@ -32,29 +29,29 @@ $(document).ready(() => {
     reqObj.spice = $(aromaSpice)[0].checked ? true : false;
     reqObj.chemical = $(aromaChemical)[0].checked ? true : false;
 
-    const isFavorite = $("#favorite")[0].checked ? true : false;
+    // const isFavorite = $("#favorite")[0].checked ? true : false;
 
-    if (isFavorite) {
-      //update in wine history
-      $.ajax({
-        type: "PUT",
-        url: `/api/winehistory/${wineId}`,
-        contentType: "application/json",
-        data: JSON.stringify({ favorite: isFavorite }),
-      })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          if (error.status === 401) {
-            alert(error.responseText);
-            window.location.href = "/";
-          } else {
-            console.log(error);
-            alert("something went wrong when adding to favorite");
-          }
-        });
-    }
+    // if (isFavorite) {
+    //   //update in wine history
+    //   $.ajax({
+    //     type: "PUT",
+    //     url: `/api/winehistory/${wineId}`,
+    //     contentType: "application/json",
+    //     data: JSON.stringify({ favorite: isFavorite }),
+    //   })
+    //     .then((data) => {
+    //       console.log(data);
+    //     })
+    //     .catch((error) => {
+    //       if (error.status === 401) {
+    //         alert(error.responseText);
+    //         window.location.href = "/";
+    //       } else {
+    //         console.log(error);
+    //         alert("something went wrong when adding to favorite");
+    //       }
+    //     });
+    // }
 
     $.post("/api/reviews", reqObj)
       .then((data) => {
