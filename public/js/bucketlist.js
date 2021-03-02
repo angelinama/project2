@@ -3,7 +3,7 @@ $(document).ready(() => {
   function fetchBucketlist() {
     const user = localStorage.getItem("user");
     const userId = JSON.parse(user).id;
-    $.get(`/api/bucketlist/${userId}`)
+    $.get(`/api/historylist/${userId}`)
       .then((data) => {
         //data contains id of wine in bucketlist of this user
         console.log(data);

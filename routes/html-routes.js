@@ -51,8 +51,55 @@ module.exports = (app) => {
   });
   //render the wineentry page in browser
   app.get("/winehistory", (req, res) => {
-    res.render("../views/winehistory.handlebars");
+    db.History.findAll({
+      where: {
+        user_id: req.user.id,
+      },
+      include: [db.Wine],
+    })
+      .then((data) => {
+        console.log(
+          data.map((entry) => {
+            return entry.dataValues.Wine.dataValues;
+          })
+        );
+        res.render("../views/winehistory.handlebars", {
+          wines: data.map((entry) => {
+            return entry.dataValues.Wine.dataValues;
+          }),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
+  //render the winefavorites page in browser
+  app.get("/favorites", (req, res) => {
+    db.History.findAll({
+      where: {
+        user_id: req.user.id,
+        favorite: true,
+      },
+      include: [db.Wine],
+    })
+      .then((data) => {
+        console.log(
+          data.map((entry) => {
+            return entry.dataValues.Wine.dataValues;
+          })
+        );
+        res.render("../views/winehistory.handlebars", {
+          wines: data.map((entry) => {
+            return entry.dataValues.Wine.dataValues;
+          }),
+          favorite: true,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   //render the winerate page in browser
   app.get("/winerate-:wineId", (req, res) => {
     res.render("../views/winerate.handlebars", { wineId: req.params.wineId });
