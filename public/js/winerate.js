@@ -32,12 +32,33 @@ $(document).ready(() => {
     reqObj.spice = $(aromaSpice)[0].checked ? true : false;
     reqObj.chemical = $(aromaChemical)[0].checked ? true : false;
 
-    // console.log(reqObj);
+    const isFavorite = $("#favorite")[0].checked ? true : false;
+
+    if (isFavorite) {
+      //update in wine history
+      $.ajax({
+        type: "PUT",
+        url: `/api/winehistory/${wineId}`,
+        contentType: "application/json",
+        data: JSON.stringify({ favorite: isFavorite }),
+      })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          if (error.status === 401) {
+            alert(error.responseText);
+            window.location.href = "/";
+          } else {
+            console.log(error);
+            alert("something went wrong when adding to favorite");
+          }
+        });
+    }
 
     $.post("/api/reviews", reqObj)
       .then((data) => {
         console.log(data);
-        //TODO should redirect to summary page for a wine
         window.location.href = `/winesummary-${wineId}`;
       })
       .catch((error) => {
