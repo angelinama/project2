@@ -52,6 +52,14 @@ a:hover {
     width: 100vw;
 }
 
+.mainbodynav{
+    color: #441215;
+    font-weight: 300;
+    background-color: white;
+    height: 85vh;
+    width: 100vw;
+}
+
 .btn-responsive {
     width: 120px;
     margin-top: 20px;
