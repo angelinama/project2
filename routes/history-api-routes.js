@@ -49,7 +49,8 @@ module.exports = (app) => {
     if (req.user) {
       db.History.destroy({
         where: {
-          id: req.params.id,
+          wine_id: req.params.id,
+          user_id: req.user.id,
         },
       })
         .then((historyEntry) => res.json(historyEntry))
