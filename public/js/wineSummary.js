@@ -3,10 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   $.get(`/api/wines/${wineId}`)
     .then((data) => {
       console.log(data);
-      d3.select("#wineName")
-        .text(data.wine_name)
-        .style("background-color", "#441215")
-        .style("color", "white");
+      d3.select("#wineName").text(data.wine_name);
       d3.select("#category").text(`Category: ${data.category}`);
       d3.select("#year").text(`Year: ${data.year}`);
       d3.select("#country").text(`Country: ${data.country}`);

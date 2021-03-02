@@ -11,10 +11,7 @@ $(document).ready(() => {
 
   $.get(`/api/wines/${wineId}`).then((data) => {
     console.log(data);
-    d3.select("#wineName")
-      .text(data.wine_name)
-      .style("background-color", "#441215")
-      .style("color", "white");
+    d3.select("#wineName").text(data.wine_name);
   });
 
   wineratingForm.on("submit", (event) => {
