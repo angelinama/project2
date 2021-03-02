@@ -41,7 +41,7 @@ $(document).ready(() => {
       password: password,
     })
       .then((data) => {
-        console.log(data);
+        console.log("signin success", data);
         localStorage.setItem("user", JSON.stringify(data));
         $("#logout").show();
         $("#logout").click(logOut);

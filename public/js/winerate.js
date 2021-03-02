@@ -9,6 +9,14 @@ $(document).ready(() => {
   const wineId = $("#wineId").val();
   const reqObj = { wine_id: wineId };
 
+  $.get(`/api/wines/${wineId}`).then((data) => {
+    console.log(data);
+    d3.select("#wineName")
+      .text(data.wine_name)
+      .style("background-color", "#441215")
+      .style("color", "white");
+  });
+
   wineratingForm.on("submit", (event) => {
     event.preventDefault();
     reqObj.overall_score = $("input:checked", ".allrating").val();
