@@ -108,15 +108,6 @@ function drawRadarChart(data) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      // scales: {
-      //   yAxes: [
-      //     {
-      //       ticks: {
-      //         beginAtZero: true,
-      //       },
-      //     },
-      //   ],
-      // },
     },
   });
   console.log(myChart.width);
