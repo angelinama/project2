@@ -1,27 +1,33 @@
-<div id="loginbody">
+<div class="container-fluid loginbody">
+  <div id="alert" class="alert alert-danger" role="alert"></div>
   <div class="row justify-content-center">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <!-- login page -START -->
-      <div data-screen="login">
-        <div class="row">
-          <div class="col-md-10 firstpglogo">
-            <img class="img-fluid" src="./images/winelog_logo2_a.png" alt="Winelog Logo" />
-          </div>
-        </div>
-        <form class="login row mb-5">
-          <label for="email-input">Your Email</label>
-          <input class="form-control-sm" id="email-input" type="text" placeholder="Email" />
-          <label for="password-input">Your Password</label>
-          <input class="form-control-sm" id="password-input" type="password" placeholder="Password" />
-          <button class="btn-secondary" type="submit" id="loginsubmit">Log In</button>
-        </form>
-        <p>Or sign up if you need an account</p>
-        <a href="/signup" class="screenswitch">Sign Up</a>
+    <div class="col-md-2"></div>
 
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-10 firstpglogo">
+          <img class="img-fluid" src="./images/winelog_logo2_a.png" alt="Winelog Logo" />
+        </div>
+        <div class="col-md-10">
+          <form class="login">
+            <div class="mb-3">
+              <label for="email-input">Your Email</label>
+              <input class="form-control" id="email-input" type="text" placeholder="Email" />
+            </div>
+            <div class="mb-3">
+              <label for="password-input">Your Password</label>
+              <input class="form-control" id="password-input" type="password" placeholder="Password" />
+            </div>
+            <button class="btn-secondary" type="submit" id="loginsubmit">Log In</button>
+          </form>
+          <p>Or sign up if you need an account<br>
+            <a href="/signup">Sign Up</a>
+          </p>
+        </div>
       </div>
-      <!-- login page -END -->
     </div>
-    <div class="col-md-4"></div>
+
+    <div class="col-md-2"></div>
   </div>
 </div>
+<script src="./js/login.js"></script>

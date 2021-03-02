@@ -1,4 +1,5 @@
-<div class="container-fluid winelogbody">
+{{> navbar/navbar-block}}
+<div class="container-fluid mainbodynav winelogbody">
     <header class="row justify-content-center wlcm">
         <div class="col-10">
             {{#if favorite}}
@@ -21,5 +22,6 @@
             {{/if}}
         </ul>
     </div>
-    <script src="./js/history.js"></script>
 </div>
+{{> footer/footer-block}}
+<script src="./js/history.js"></script>

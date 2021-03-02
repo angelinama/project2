@@ -9,13 +9,12 @@ a:hover {
     color: #847c41;
 }
 
-#loginbody {
+.loginbody {
     color: white;
     font-weight: 300;
     background-color: #441215;
     height: 100vh;
     width: 100vw;
-    padding-left: 20px;
 }
 
 .firstpglogo {
@@ -45,19 +44,48 @@ a:hover {
     margin-bottom: 15px;
 }
 
+.mainbody {
+    color: #441215;
+    font-weight: 300;
+    background-color: white;
+    height: 93vh;
+    width: 100vw;
+}
+
+.mainbodynav{
+    color: #441215;
+    font-weight: 300;
+    background-color: white;
+    height: 85vh;
+    width: 100vw;
+}
+
 .btn-responsive {
     width: 120px;
-    height: 120px;
     margin-top: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 780px) {
     .btn-responsive {
-        width: 280px;
-        height: 280px;
-        margin: 35px, 0px, 35px, 0px;
+        width: 240px;
     }
 }
+
+.welcomeimg {
+    width: 220px;
+    margin: 25px;
+    margin-top: 50px;
+}
+
+@media (min-width: 780px) {
+    .welcomeimg {
+        width: 300px;
+        margin: 25px;
+        margin-top: 50px;
+
+    }
+}
+
 #alert {
     display: none;
 }

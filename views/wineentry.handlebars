@@ -1,9 +1,10 @@
-<div class="container-fluid winelogbody">
-    <header class="row justify-content-center wlcm">
-        <div class="col-10">
+{{> navbar/navbar-block}}
+<div class="container-fluid mainbodynav">
+    <div class="row justify-content-center">
+        <div class="col-12">
             <h1>LOG YOUR WINE</h1>
         </div>
-    </header>
+    </div>
     <div class="row justify-content-center">
         <form class="wineentry">
             <label for="wine_name"class="form-label">Wine Name</label>
@@ -17,9 +18,11 @@
             <label for="region" class="form-label">Region</label>
             <input type="text" name="region" class="form-control" id="region" placeholder="Bordeaux">
             <div class="text-center mt">
-                <button id="winehistory" type="submit" class="btn btn-outline-primary">Add to History</button>
-                <button id="bucketlist" type="submit" class="btn btn-outline-primary">Add to Bucket List</button>
+                <button id="winehistory" type="submit" class="btn btn-secondary">Add to History</button>
+                <button id="bucketlist" type="submit" class="btn btn-secondary">Add to Bucket List</button>
             </div>
         </form>
     </div>
 </div>
+{{> footer/footer-block}}
+<script src="./js/wineentry.js"></script>

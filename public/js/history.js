@@ -29,7 +29,6 @@ $(document).ready(() => {
       button.addEventListener("click", (e) => {
         // Grabs the id of the element that goes by the name, "id"
         const id = e.target.getAttribute("data-id");
-
         fetch(`/api/winehistory/${id}`, {
           method: "DELETE",
         }).then((response) => {
