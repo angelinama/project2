@@ -117,15 +117,16 @@ function drawRadarChart(data) {
 
 //add to favorite list
 function addToFavorite(wineId) {
-  const favoriteCheckbox = $("#favoriteCheckbox")[0];
+  const favoriteCheckbox = $("#favoriteCheckbox");
 
   $.get(`/api/winehistory/wine/${wineId}`)
     .then((data) => {
-      const isFavorite = data.favorite;
+      const isFavorite = data ? data.favorite : false;
       if (isFavorite) {
-        favoriteCheckbox.checked = true;
+        favoriteCheckbox.prop("checked", true);
+        // console.log("is checked", favoriteCheckbox.is(":checked"));
       } else {
-        favoriteCheckbox.checked = false;
+        favoriteCheckbox.prop("checked", false);
       }
     })
     .catch((error) => {
@@ -139,24 +140,23 @@ function addToFavorite(wineId) {
     });
 
   favoriteCheckbox.change(() => {
-    favoriteCheckbox.checked = !favoriteCheckbox.checked;
-    // $.ajax({
-    //   type: "PUT",
-    //   url: `/api/winehistory/${wineId}`,
-    //   contentType: "application/json",
-    //   data: JSON.stringify({ favorite: favoriteCheckbox.checked }),
-    // })
-    //   .then((data) => {
-    //     console.log(data);
-    //   })
-    //   .catch((error) => {
-    //     if (error.status === 401) {
-    //       alert(error.responseText);
-    //       window.location.href = "/";
-    //     } else {
-    //       console.log(error);
-    //       alert("something went wrong when adding to favorite");
-    //     }
-    //   });
+    $.ajax({
+      type: "PUT",
+      url: `/api/winehistory/${wineId}`,
+      contentType: "application/json",
+      data: JSON.stringify({ favorite: favoriteCheckbox.is(":checked") }),
+    })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        if (error.status === 401) {
+          alert(error.responseText);
+          window.location.href = "/";
+        } else {
+          console.log(error);
+          alert("something went wrong when adding to favorite");
+        }
+      });
   });
 }

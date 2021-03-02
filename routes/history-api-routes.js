@@ -23,7 +23,7 @@ module.exports = (app) => {
   //get one wine history
   app.get("/api/winehistory/wine/:wineId", (req, res) => {
     if (req.user) {
-      db.History.findAll({
+      db.History.findOne({
         where: {
           user_id: req.user.id,
           wine_id: req.params.wineId,
