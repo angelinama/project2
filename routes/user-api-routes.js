@@ -10,18 +10,6 @@ module.exports = (app) => {
     });
   });
 
-  // app.get("/api/users/:id", (req, res) => {
-  //   db.User.findOne({
-  //     where: {
-  //       id: req.params.id,
-  //     },
-  //   })
-  //     //TODO remove password from return.
-  //     .then((dbUser) => res.json(dbUser))
-  //     //add .catch
-  //     .catch((error) => console.log({ error }));
-  // });
-
   app.post("/api/users", (req, res) => {
     console.log("Hello");
     db.User.create(req.body)

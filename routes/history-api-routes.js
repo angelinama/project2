@@ -23,6 +23,7 @@ module.exports = (app) => {
   app.post("/api/winehistory", (req, res) => {
     console.log(req.user.id);
     if (req.user) {
+      console.log("====THIS IS A TEST======:26");
       req.body.user_id = req.user.id;
       db.History.create(req.body)
         .then((wineHistory) => res.json(wineHistory))

@@ -21,4 +21,28 @@ $(document).ready(() => {
       });
   }
   fetchHistorylist();
+  // DELETE
+  const deleteBtns = document.querySelectorAll(".delete-history");
+  // Set up the event listener for deleting a cat.
+  if (deleteBtns) {
+    deleteBtns.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        // Grabs the id of the element that goes by the name, "id"
+        const id = e.target.getAttribute("data-id");
+
+        fetch(`/api/wine/${id}`, {
+          method: "DELETE",
+        }).then((response) => {
+          // Check that the response is all good
+          // Reload the page so the user can see the new state
+          if (response.ok) {
+            console.log(`deleted wine: ${id}`);
+            location.reload("/");
+          } else {
+            alert("something went wrong!");
+          }
+        });
+      });
+    });
+  }
 });

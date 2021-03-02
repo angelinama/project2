@@ -9,6 +9,14 @@ $(document).ready(() => {
   const wineId = $("#wineId").val();
   const reqObj = { wine_id: wineId };
 
+  $.get(`/api/wines/${wineId}`).then((data) => {
+    console.log(data);
+    d3.select("#wineName")
+      .text(data.wine_name)
+      .style("background-color", "#441215")
+      .style("color", "white");
+  });
+
   wineratingForm.on("submit", (event) => {
     event.preventDefault();
     reqObj.overall_score = $("input:checked", ".allrating").val();
@@ -30,13 +38,15 @@ $(document).ready(() => {
       .then((data) => {
         console.log(data);
         //TODO should redirect to summary page for a wine
-        // window.location.href = "/<summary page>";
-        window.location.href = "/api/reviews";
+        window.location.href = `/winesummary-${wineId}`;
       })
       .catch((error) => {
         if (error.status === 401) {
           alert(error.responseText);
           window.location.href = "/";
+        } else {
+          console.log(error);
+          alert("something went wrong when submitting a review");
         }
       });
   });
