@@ -15,7 +15,6 @@ a:hover {
     background-color: #441215;
     height: 100vh;
     width: 100vw;
-    padding-left: 20px;
 }
 
 .firstpglogo {
@@ -45,6 +44,14 @@ a:hover {
     margin-bottom: 15px;
 }
 
+.mainbody {
+    color: #441215;
+    font-weight: 300;
+    background-color: white;
+    height: 93vh;
+    width: 100vw;
+}
+
 .navbar-nav > li > a {padding-top:3px !important; padding-bottom:3px !important;}
 .navbar {min-height:35px !important}
 
@@ -54,11 +61,10 @@ a:hover {
     margin-top: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 780px) {
     .btn-responsive {
-        width: 280px;
-        height: 280px;
-        margin: 35px, 0px, 35px, 0px;
+        width: 240px;
+        height: 240px;
     }
 }
 #alert {
