@@ -60,20 +60,22 @@ module.exports = (app) => {
       .then((data) => {
         console.log(
           data.map((entry) => {
-            return {
-              wine_name: entry.dataValues.Wine.dataValues.wine_name,
-              wine_id: entry.dataValues.Wine.dataValues.id,
-              history_id: entry.dataValues.id,
-            };
+            return entry.dataValues.Wine.dataValues;
+            // {
+            // wine_name: entry.dataValues.Wine.dataValues.wine_name,
+            // wine_id: entry.dataValues.Wine.dataValues.id,
+            // history_id: entry.dataValues.id,
+            // };
           })
         );
         res.render("../views/winehistory.handlebars", {
           wines: data.map((entry) => {
-            return {
-              wine_name: entry.dataValues.Wine.dataValues.wine_name,
-              wine_id: entry.dataValues.Wine.dataValues.id,
-              history_id: entry.dataValues.id,
-            };
+            return entry.dataValues.Wine.dataValues;
+            // {
+            //   wine_name: entry.dataValues.Wine.dataValues.wine_name,
+            //   wine_id: entry.dataValues.Wine.dataValues.id,
+            //   history_id: entry.dataValues.id,
+            // };
           }),
         });
       })
