@@ -59,4 +59,20 @@ module.exports = (app) => {
       res.status(401).json({ error: "Please log in" });
     }
   });
+  app.update("/api/winehistory/:id", (req, res) => {
+    if (req.user) {
+      db.History.update({
+        where: {
+          wine_id: req.params.id,
+        },
+      })
+        .then((historyEntry) => res.json(historyEntry))
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send("Something went wrong");
+        });
+    } else {
+      res.status(401).json({ error: "Please log in" });
+    }
+  });
 };

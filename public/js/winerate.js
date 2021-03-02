@@ -32,12 +32,15 @@ $(document).ready(() => {
     reqObj.spice = $(aromaSpice)[0].checked ? true : false;
     reqObj.chemical = $(aromaChemical)[0].checked ? true : false;
 
-    // console.log(reqObj);
+    const isFavorite = $("#favorite")[0].checked ? true : false;
+
+    if (isFavorite) {
+      //update in wine history
+    }
 
     $.post("/api/reviews", reqObj)
       .then((data) => {
         console.log(data);
-        //TODO should redirect to summary page for a wine
         window.location.href = `/winesummary-${wineId}`;
       })
       .catch((error) => {
