@@ -48,7 +48,17 @@ $(document).ready(() => {
       password: password,
     }) // eslint-disable-next-line no-unused-vars
       .then((data) => {
-        window.location.replace("/welcome");
+        $.get("/api/users", {
+          email: email,
+          password: password,
+        }).then((data) => {
+          console.log("signin success", data);
+          localStorage.setItem("user", JSON.stringify(data));
+          window.location.replace("/welcome");
+        });
+        // console.log("Sign up success!", data);
+        // localStorage.setItem("user", JSON.stringify(data));
+        // window.location.replace("/welcome");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
