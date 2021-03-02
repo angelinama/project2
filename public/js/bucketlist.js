@@ -3,7 +3,7 @@ $(document).ready(() => {
   function fetchBucketlist() {
     const user = localStorage.getItem("user");
     const userId = JSON.parse(user).id;
-    $.get(`/api/historylist/${userId}`)
+    $.get(`/api/bucketlist/${userId}`)
       .then((data) => {
         //data contains id of wine in bucketlist of this user
         console.log(data);
@@ -29,8 +29,7 @@ $(document).ready(() => {
       button.addEventListener("click", (e) => {
         // Grabs the id of the element that goes by the name, "id"
         const id = e.target.getAttribute("data-id");
-        //TODO change this to history API instead of review
-        $.post("/api/reviews", { wine_id: id })
+        $.post("/api/winehistory", { wine_id: id })
           .then((response) => {
             // Reload the page so the user can see the new state
             console.log(response);
