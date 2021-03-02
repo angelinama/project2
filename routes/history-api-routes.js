@@ -48,8 +48,29 @@ module.exports = (app) => {
       db.History.destroy({
         where: {
           wine_id: req.params.id,
+          user_id: req.user.id,
         },
       })
+        .then((historyEntry) => res.json(historyEntry))
+        .catch((err) => {
+          console.log(err);
+          res.status(500).send("Something went wrong");
+        });
+    } else {
+      res.status(401).json({ error: "Please log in" });
+    }
+  });
+  app.put("/api/winehistory/:wineId", (req, res) => {
+    if (req.user) {
+      db.History.update(
+        { favorite: req.body.favorite },
+        {
+          where: {
+            wine_id: req.params.wineId,
+            user_id: req.user.id,
+          },
+        }
+      )
         .then((historyEntry) => res.json(historyEntry))
         .catch((err) => {
           console.log(err);
