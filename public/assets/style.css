@@ -1,108 +1,117 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    font-size: medium;
+  font-family: "Poppins", sans-serif;
+  font-size: medium;
 }
 a {
-    color: #f7bf45;
+  color: #f7bf45;
 }
 a:hover {
-    color: #847c41;
+  color: #847c41;
 }
 
 .loginbody {
-    color: white;
-    font-weight: 300;
-    background-color: #441215;
-    height: 100vh;
-    width: 100vw;
+  color: white;
+  font-weight: 300;
+  background-color: #441215;
+  height: 100vh;
+  width: 100vw;
 }
 
 .middleone {
-    padding:30px;
+  padding: 30px;
 }
 
 .firstpglogo {
-    padding-top: 35px;
-    padding-bottom: 10px;
-    width: 225px;
-
+  padding-top: 35px;
+  padding-bottom: 10px;
+  width: 225px;
 }
 
 .wlcm {
-    padding-top: 5px;
-    padding-bottom: 10px;
-    color: #f7bf45;
-    font-weight: 400;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  color: #f7bf45;
+  font-weight: 400;
 }
 
 .pagetitle {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    color: #761916;
-    font-weight: 600;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #761916;
+  font-weight: 600;
 }
 
-.btn-secondary, .btn-secondary:visited {
-    background-color: #847c41 !important;
-    border: #847c41 !important;
-    width: 150px;
+.btn-secondary,
+.btn-secondary:visited {
+  background-color: #847c41 !important;
+  border: #847c41 !important;
+  width: 150px;
 }
-.btn-secondary:hover, .btn-secondary:active  {
-    background-color: #f7bf45 !important;
-    border: #f7bf45 !important;
-}
-
-.details, .deletehistory {
-    width: 120px;
+.btn-secondary:hover,
+.btn-secondary:active {
+  background-color: #f7bf45 !important;
+  border: #f7bf45 !important;
 }
 
-#signupbutton, #signupsubmit, #loginsubmit {
-    margin-top: 20px;
-    margin-bottom: 15px;
+.details,
+.deletehistory {
+  width: 120px;
+}
+
+#signupbutton,
+#signupsubmit,
+#loginsubmit {
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 .mainbody {
-    color: #441215;
-    font-weight: 300;
-    background-color: white;
-    height: 93vh;
-    width: 100vw;
+  color: #441215;
+  font-weight: 300;
+  background-color: white;
+  height: 93vh;
+  width: 100vw;
 }
 
-.mainbodynav{
-    color: #441215;
-    font-weight: 300;
-    background-color: white;
-    height: 85vh;
-    width: 100vw;
+.mainbodynav {
+  color: #441215;
+  font-weight: 300;
+  background-color: white;
+  height: 85vh;
+  width: 100vw;
 }
 
 .btn-responsive {
-    width: 120px;
-    margin-top: 20px;
+  width: 120px;
+  margin-top: 20px;
 }
 
 @media (min-width: 780px) {
-    .btn-responsive {
-        width: 240px;
-    }
+  .btn-responsive {
+    width: 240px;
+  }
 }
 
 .welcomeimg {
-    width: 220px;
-    margin: 25px;
-    margin-top: 50px;
+  width: 220px;
+  margin: 25px;
+  margin-top: 50px;
 }
 
 @media (min-width: 780px) {
-    .welcomeimg {
-        width: 300px;
-        margin: 25px;
-        margin-top: 50px;
+  .welcomeimg {
+    width: 300px;
+    margin: 25px;
+    margin-top: 50px;
+  }
 
-    }
+  .chart-container {
+    /* position: relative; */
+    height: 40vh;
+    width: 40vw;
+  }
 }
 
 #alert {
-    display: none;
+  display: none;
 }
