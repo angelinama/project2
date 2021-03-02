@@ -64,7 +64,15 @@ $(document).ready(() => {
               console.log(err);
             });
         } else {
-          window.location.replace("/winehistory");
+          $.post("/api/winehistory", {
+            wine_id: data.id,
+          })
+            .then(() => {
+              window.location.replace("/winehistory");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         } // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch((err) => {
