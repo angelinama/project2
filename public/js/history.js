@@ -30,11 +30,9 @@ $(document).ready(() => {
         // Grabs the id of the element that goes by the name, "id"
         const id = e.target.getAttribute("data-id");
 
-        fetch(`/api/wine/${id}`, {
+        fetch(`/api/winehistory/${id}`, {
           method: "DELETE",
         }).then((response) => {
-          // Check that the response is all good
-          // Reload the page so the user can see the new state
           if (response.ok) {
             console.log(`deleted wine: ${id}`);
             location.reload("/");
