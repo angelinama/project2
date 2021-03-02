@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.region) {
         d3.select("#region").text(`Region: ${data.region}`);
       }
+
+      //display checkbox according to if its favorite is true in history
+      addToFavorite(wineId);
       //get wine reviews
       return $.get(`api/reviews/${wineId}`);
     })
@@ -46,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
             chartData[key] = data[key];
           }
         }
-        //should change the data pass to it
         drawRadarChart(chartData);
       } else {
         const btn = d3
@@ -58,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
           .classed("btn-primary", true);
 
         btn.on("click", () => {
-          //TODO  hook it to review page
           window.location.href = `/winerate-${wineId}`;
         });
       }
@@ -74,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//TODO better handle null values
 function drawRadarChart(data) {
   console.log(data);
   const ctx = document.getElementById("myChart").getContext("2d");
@@ -111,4 +113,50 @@ function drawRadarChart(data) {
     },
   });
   console.log(myChart.width);
+}
+
+//add to favorite list
+function addToFavorite(wineId) {
+  const favoriteCheckbox = $("#favoriteCheckbox")[0];
+
+  $.get(`/api/winehistory/wine/${wineId}`)
+    .then((data) => {
+      const isFavorite = data.favorite;
+      if (isFavorite) {
+        favoriteCheckbox.checked = true;
+      } else {
+        favoriteCheckbox.checked = false;
+      }
+    })
+    .catch((error) => {
+      if (error.status === 401) {
+        alert(error.responseText);
+        window.location.href = "/";
+      } else {
+        console.log(error);
+        alert("something went wrong when adding to favorite");
+      }
+    });
+
+  favoriteCheckbox.change(() => {
+    favoriteCheckbox.checked = !favoriteCheckbox.checked;
+    // $.ajax({
+    //   type: "PUT",
+    //   url: `/api/winehistory/${wineId}`,
+    //   contentType: "application/json",
+    //   data: JSON.stringify({ favorite: favoriteCheckbox.checked }),
+    // })
+    //   .then((data) => {
+    //     console.log(data);
+    //   })
+    //   .catch((error) => {
+    //     if (error.status === 401) {
+    //       alert(error.responseText);
+    //       window.location.href = "/";
+    //     } else {
+    //       console.log(error);
+    //       alert("something went wrong when adding to favorite");
+    //     }
+    //   });
+  });
 }
