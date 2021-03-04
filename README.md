@@ -52,6 +52,7 @@ Rank a wine,
 keep your wine history,
 never forget your favorites,
 keep new discoveries in your bucket list.
+![Wine Log Demo](public/images/WineLog.gif)
 
 ## License
 
