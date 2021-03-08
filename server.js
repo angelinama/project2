@@ -3,6 +3,7 @@ const express = require("express");
 const db = require("./models");
 const session = require("express-session");
 const passport = require("./config/passport");
+const compression = require("compression");
 
 //import routes
 const htmlRoutes = require("./routes/html-routes.js");
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 8080;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(compression());
 
 // We need to use sessions to keep track of our user's login status
 app.use(
