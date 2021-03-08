@@ -1,4 +1,5 @@
 require("dotenv").config();
+const compression = require("compression");
 const express = require("express");
 const db = require("./models");
 const session = require("express-session");
@@ -16,13 +17,16 @@ const historyRouter = require("./routes/history-api-routes.js");
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+// compress all responses
+app.use(compression());
+
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // We need to use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+	session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -44,5 +48,5 @@ historyRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync().then(() => {
-  app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+	app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 });
